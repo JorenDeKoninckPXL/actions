@@ -1,0 +1,19 @@
+name: Steps Examples
+on: 
+  workflow_dispatch:
+
+jobs:
+  hello-world:
+    runs-on: ubnuntu-latest
+    steps:
+      - name: Create directory
+        run: mkdir testmachine
+
+      - name: Run uname command and save output
+        run: uname -a > testmachine/output.txt
+
+      - name: Show contents of output.txt
+        run: cat testmachine/output.txt
+
+      - name: List directory contents and structure
+        run: ls -alhR
