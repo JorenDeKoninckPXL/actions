@@ -1,0 +1,22 @@
+name: File Manipulation
+
+on:
+  workflow_dispatch:
+
+jobs:
+  file-operations:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create new directory
+        run: mkdir test-directory
+
+      - name: Write text to file
+        run: echo "This is a test file created by GitHub Actions!" > test-directory/test-file.txt
+
+      - name: Show directory contents
+        run: |
+          echo "=== Directory listing ==="
+          ls -la test-directory
+          echo ""
+          echo "=== File contents ==="
+          cat test-directory/test-file.txt
