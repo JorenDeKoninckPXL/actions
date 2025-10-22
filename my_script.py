@@ -1,12 +1,45 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
-print("Hello from Python!")
-print("This script is running in a GitHub Actions workflow.")
-print("Python version and environment details:")
+import os, platform, subprocess, socket
 
-import sys
-import platform
+#command = "cat /proc/cpuinfo"
+#print(subprocess.check_output(command, shell=True).strip())
 
-print(f"Python version: {sys.version}")
-print(f"Platform: {platform.platform()}")
-print(f"Processor: {platform.processor()}")
+kb = float(1024)
+mb = float(kb ** 2)
+gb = float(kb ** 3)
+
+
+def load_avg():
+    print()
+    print('---------- Load Average ----------')
+    print()
+    print("Load avg (1 mins)  :",round(os.getloadavg()[0],2))
+    print("Load avg (5 mins)  :",round(os.getloadavg()[1],2))
+    print("Load avg (15 mins) :",round(os.getloadavg()[2],2))
+
+def system():
+    core = os.cpu_count()
+    host = socket.gethostname()
+    print()
+    print('---------- System Info ----------')
+    print()
+    print("Hostname     :",host)
+    print("System       :",platform.system(),platform.machine())
+    print("Kernel       :",platform.release())
+    print('Compiler     :', platform.python_compiler())
+    print('CPU          :', core,"(Core)")
+
+def cpu():
+    print()
+    print('---------- CPU ----------')
+    print()
+    print("CPU Usage    : ",cpuUsage,"GiB")
+
+
+def main():
+    system()
+    load_avg()
+
+
+main()
