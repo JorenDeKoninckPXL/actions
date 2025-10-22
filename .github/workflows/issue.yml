@@ -1,0 +1,21 @@
+name: Issue Automation
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  log-issue-details:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Display issue information
+        run: |
+          echo "=== New Issue Created ==="
+          echo "Issue Title: ${{ github.event.issue.title }}"
+          echo "Issue Number: ${{ github.event.issue.number }}"
+          echo ""
+          echo "=== Issue Body ==="
+          echo "${{ github.event.issue.body }}"
+          echo ""
+          echo "=== Issue Author ==="
+          echo "Created by: ${{ github.event.issue.user.login }}"
