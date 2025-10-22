@@ -1,19 +1,12 @@
-name: Uses Examples
-
+name: Checkout
 on:
-  workflow_dispatch:
-
+  push:
+    branches:
+      - main
 jobs:
-  python-demo:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repository code
-        uses: actions/checkout@v4
-
-      - name: Install Python 3.13
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.13'
-
-      - name: Execute Python script
-        run: python my_script.py
+      - name: Checkout
+        uses: actions/checkout@v5.0.0
